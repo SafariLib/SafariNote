@@ -1,0 +1,33 @@
+{
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["react", "react-hooks", "import", "@typescript-eslint"],
+    "rules": {
+        "@typescript-eslint/no-explicit-any": "error",
+        "@typescript-eslint/prefer-for-of": "error",
+        "@typescript-eslint/consistent-type-definitions": ["error", "interface"],
+        "@typescript-eslint/consistent-type-imports": "error",
+        "@typescript-eslint/no-namespace": "off",
+        "@typescript-eslint/no-empty-function": "off",
+        "@typescript-eslint/no-empty-interface": "off",
+        "@typescript-eslint/ban-ts-comment": "off",
+        "@typescript-eslint/no-unused-vars": [
+            "error",
+            {
+                "argsIgnorePattern": "^_",
+                "varsIgnorePattern": "^_"
+            }
+        ],
+        "no-nested-ternary": "error",
+        "react-hooks/exhaustive-deps": "error",
+        "react-hooks/rules-of-hooks": "error"
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:react/recommended",
+        "plugin:storybook/recommended",
+        "prettier",
+        "eslint-config-prettier"
+    ]
+}
