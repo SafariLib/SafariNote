@@ -1,0 +1,2 @@
+# SafariNote
+Knowledge base application
