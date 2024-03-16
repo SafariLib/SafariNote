@@ -1,1 +1,2 @@
-export { default as Workspace, type WorkspaceProps } from './Workspace/Workspace';
+export { default as Workspace } from './Workspace/Workspace';
+export type { WorkspaceProps } from './Workspace/types';
