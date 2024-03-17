@@ -1,35 +1,32 @@
-import type { DragEndEvent, UniqueIdentifier } from '@dnd-kit/core';
-import { DndContext } from '@dnd-kit/core';
+import type { UniqueIdentifier } from '@dnd-kit/core';
 import { css } from '@emotion/react';
 import emotionStyled from '@emotion/styled';
 import { useState, type FC } from 'react';
-import Block from './components/Block/Block';
-import type { WorkspaceProps } from './types';
+import Block from './components/Block';
+import SortableContext from './components/SortableContext';
 
-const testblocks = ['1', '2', '3', '4', '5'];
+export interface WorkspaceProps {}
+
+const testblocks: UniqueIdentifier[] = [
+    'Un texte random avec des mots dedans',
+    'Un autre texte random avec des mots dedans',
+    'Un texte un peu plus long avec des mots dedans',
+    'Un texte avec des chiffres => 1234567890 lol',
+];
 
 const Workspace: FC<WorkspaceProps> = () => {
-    const [parent, setParent] = useState<UniqueIdentifier | null>(null);
-
-    const handleDragEnd = (event: DragEndEvent) => {
-        const { over } = event;
-        setParent(over?.id || null);
-    };
+    const [items, setItems] = useState(testblocks);
 
     return (
-        <DndContext onDragEnd={handleDragEnd}>
-            <Layout>
-                {!parent && <Block.Draggable id="0" />}
-                {testblocks.map(block =>
-                    parent === block ? (
-                        <Block.Draggable id="0" key={block} />
-                    ) : (
-                        <Block.Droppable id={block} key={block} />
-                    ),
-                )}
-                {parent}
-            </Layout>
-        </DndContext>
+        <Layout>
+            <SortableContext onChange={setItems} items={items}>
+                {items.map(id => (
+                    <Block.Sortable key={id} id={id}>
+                        {id}
+                    </Block.Sortable>
+                ))}
+            </SortableContext>
+        </Layout>
     );
 };
 
