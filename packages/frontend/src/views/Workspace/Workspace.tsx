@@ -1,31 +1,26 @@
+import { generateGuid } from '@/utils';
 import type { UniqueIdentifier } from '@dnd-kit/core';
 import { css } from '@emotion/react';
 import emotionStyled from '@emotion/styled';
 import { useState, type FC } from 'react';
-import Block from './components/Block';
-import SortableContext from './components/SortableContext';
+import { Block, BlockContext, Input } from './components';
 
 export interface WorkspaceProps {}
 
-const testblocks: UniqueIdentifier[] = [
-    'Un texte random avec des mots dedans',
-    'Un autre texte random avec des mots dedans',
-    'Un texte un peu plus long avec des mots dedans',
-    'Un texte avec des chiffres => 1234567890 lol',
-];
+const testblocks: UniqueIdentifier[] = Array.from({ length: 10 }, (_, i) => `index:${i} - ${generateGuid()}`);
 
 const Workspace: FC<WorkspaceProps> = () => {
     const [items, setItems] = useState(testblocks);
 
     return (
         <Layout>
-            <SortableContext onChange={setItems} items={items}>
+            <BlockContext onChange={setItems} items={items}>
                 {items.map(id => (
                     <Block.Sortable key={id} id={id}>
-                        {id}
+                        <Input type="text" defaultValue={id} />
                     </Block.Sortable>
                 ))}
-            </SortableContext>
+            </BlockContext>
         </Layout>
     );
 };

@@ -1,14 +1,14 @@
 import type { Active, DragEndEvent, DragStartEvent, Over, UniqueIdentifier } from '@dnd-kit/core';
 import { DndContext, KeyboardSensor, PointerSensor, closestCenter, useSensor, useSensors } from '@dnd-kit/core';
 import {
-    SortableContext as DndSortableContext,
+    SortableContext,
     arrayMove,
     sortableKeyboardCoordinates as coordinateGetter,
     verticalListSortingStrategy as strategy,
 } from '@dnd-kit/sortable';
 import type { Dispatch, FC, PropsWithChildren, SetStateAction } from 'react';
 
-export interface SortableContextProps extends PropsWithChildren {
+export interface BlockContextProps extends PropsWithChildren {
     items: UniqueIdentifier[];
     onChange: Dispatch<SetStateAction<UniqueIdentifier[]>>;
     onDragStart?: (e: DragStartEvent, active?: Active) => void;
@@ -16,7 +16,7 @@ export interface SortableContextProps extends PropsWithChildren {
     renderOverlay?: (id: UniqueIdentifier) => JSX.Element;
 }
 
-const SortableContext: FC<SortableContextProps> = ({ items, children, onChange, onDragEnd, onDragStart }) => {
+const BlockContext: FC<BlockContextProps> = ({ items, children, onChange, onDragEnd, onDragStart }) => {
     const sensors = useSensors(useSensor(PointerSensor), useSensor(KeyboardSensor, { coordinateGetter }));
 
     const handleDragStart = (event: DragStartEvent) => {
@@ -44,11 +44,11 @@ const SortableContext: FC<SortableContextProps> = ({ items, children, onChange, 
             collisionDetection={closestCenter}
             onDragStart={handleDragStart}
             onDragEnd={handleDragEnd}>
-            <DndSortableContext items={items} strategy={strategy}>
+            <SortableContext items={items} strategy={strategy}>
                 {children}
-            </DndSortableContext>
+            </SortableContext>
         </DndContext>
     );
 };
 
-export default SortableContext;
+export default BlockContext;

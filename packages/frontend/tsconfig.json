@@ -20,6 +20,7 @@
         "useDefineForClassFields": true,
         "paths": {
             "@/*": ["src/*"],
+            "@utils": ["src/utils"],
             "@views": ["src/views"]
         }
     },
