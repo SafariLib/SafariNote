@@ -1,1 +1,1 @@
-export { generateGuid } from './string';
+export { default as Guid } from './prototypes/Guid/Guid';
