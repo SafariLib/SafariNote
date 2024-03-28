@@ -13,7 +13,7 @@ export default defineConfig({
             '@': path.resolve(__dirname, 'src'),
             '@components': path.resolve(__dirname, 'src/components'),
             '@utils': path.resolve(__dirname, 'src/utils'),
-            '@views': path.resolve(__dirname, 'src/views'),
+            '@store': path.resolve(__dirname, 'src/store'),
         },
     },
     plugins: [react()],

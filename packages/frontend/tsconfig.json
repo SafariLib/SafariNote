@@ -22,7 +22,7 @@
             "@/*": ["src/*"],
             "@components": ["src/components"],
             "@utils": ["src/utils"],
-            "@views": ["src/views"]
+            "@store": ["src/store"]
         }
     },
     "include": ["src", "vite.config.mts"],
