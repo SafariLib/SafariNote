@@ -7,6 +7,9 @@
         "preview": "vite preview"
     },
     "dependencies": {
+        "@blocksuite/blocks": "^0.13.0",
+        "@blocksuite/presets": "^0.13.0",
+        "@blocksuite/store": "^0.13.0",
         "@emotion/react": "^11.11.4",
         "@emotion/styled": "^11.11.0",
         "@fontsource/roboto": "^5.0.12",
